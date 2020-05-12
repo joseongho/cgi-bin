@@ -1,6 +1,6 @@
 #!/bin/bash
 
-myTmp=`ls /var/www/html/javascriptSlide`
+myTmp=`ls /var/www/html/myDocument`
 
 cat << EOL
 Content-type: text/html
@@ -14,12 +14,11 @@ cat < /var/www/html/nav.html
 cat < /var/www/html/header.html
 
 echo "<article><li>"
-for img in $myTmp
+for arg in $myTmp
 do
-	echo "<img src=\"/javascriptSlide/$img\" />"
+	echo "<ul><a href="/cgi-bin/readDocument.cgi?$arg">$arg</a></ul>"
 done
-echo "</li></article>"
-echo "<script src=\"/javascriptSlide.js\"></script>"
+echo "</li><a href=\"/cgi-bin/createDocument.cgi\">createDocument</a></article>"
 
 cat < /var/www/html/footer.html
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-myTmp=`ls /var/www/html/javascriptSlide`
+myTmp=`cat /var/www/html/myDocument/$QUERY_STRING`
 
 cat << EOL
 Content-type: text/html
@@ -13,13 +13,7 @@ cat < /var/www/html/nav.html
 
 cat < /var/www/html/header.html
 
-echo "<article><li>"
-for img in $myTmp
-do
-	echo "<img src=\"/javascriptSlide/$img\" />"
-done
-echo "</li></article>"
-echo "<script src=\"/javascriptSlide.js\"></script>"
+echo "<article><pre>$myTmp</pre></article>"
 
 cat < /var/www/html/footer.html
 
