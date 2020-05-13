@@ -16,7 +16,7 @@ cat < /var/www/html/header.html
 echo "<article><li>"
 for arg in $myTmp
 do
-	echo "<ul><a href="/cgi-bin/readDocument.cgi?$arg">$arg</a></ul>"
+	echo "<ul><a href="/cgi-bin/getDocument.cgi?myRead=$arg">$arg</a></ul>"
 done
 echo "</li><a href=\"/cgi-bin/createDocument.cgi\">createDocument</a></article>"
 
