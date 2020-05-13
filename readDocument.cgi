@@ -13,7 +13,7 @@ cat < /var/www/html/nav.html
 
 cat < /var/www/html/header.html
 
-echo "<article><pre>$myTmp</pre></article>"
+echo "<article><p>$myTmp</p></article>"
 
 cat < /var/www/html/footer.html
 

@@ -26,16 +26,16 @@ EOL
 cat < /var/www/html/footer.html
 
 cat < /var/www/html/index2.html
-fi
 
-if [ $REQUEST_METHOD = "POST" ]
+elif [ $REQUEST_METHOD = "POST" ]
 then
 read -n $CONTENT_LENGTH myTmp <&0
-echo $myTmp > /var/www/html/myDocument/tetete
+IFS='&'
+eval $myTmp
+echo $text > "/var/www/html/myDocument/$title"
 
 cat << EOL
 Location: /cgi-bin/myDocument.cgi
-
 
 EOL
 fi
