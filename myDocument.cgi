@@ -2,24 +2,14 @@
 
 myTmp=`ls /var/www/html/myDocument`
 
-cat << EOL
-Content-type: text/html
+if [ "$REQUEST_METHOD" == "GET" ]
+then
 
-EOL
+source getDocument.cgi
 
-cat < /var/www/html/index1.html
+elif [ "$REQUEST_METHOD" == "POST" ]
+then
 
-cat < /var/www/html/nav.html
+source postDocument.cgi
 
-cat < /var/www/html/header.html
-
-echo "<article><li>"
-for arg in $myTmp
-do
-	echo "<ul><a href="/cgi-bin/getDocument.cgi?myRead=$arg">$arg</a></ul>"
-done
-echo "</li><a href=\"/cgi-bin/createDocument.cgi\">createDocument</a></article>"
-
-cat < /var/www/html/footer.html
-
-cat < /var/www/html/index2.html
+fi
